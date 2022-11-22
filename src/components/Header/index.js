@@ -1,15 +1,23 @@
 import React from 'react';
 import {View} from 'react-native';
 
-import {Title, SubTitle, HelpButton, HelpButtonText} from '../../styles';
+import {
+  Title,
+  SubTitle,
+  HelpButton,
+  HelpButtonText,
+  TitleContainer,
+} from './styles';
 
 const Header = ({callback, subtitle}) => {
   return (
-    <View style={{zIndex: 14}}>
-      <Title> TormentaCards </Title>
-      <HelpButton onPress={callback}>
-        <HelpButtonText>?</HelpButtonText>
-      </HelpButton>
+    <View>
+      <TitleContainer>
+        <Title> TormentaCards </Title>
+        <HelpButton onPress={callback}>
+          <HelpButtonText>?</HelpButtonText>
+        </HelpButton>
+      </TitleContainer>
       <SubTitle>{subtitle}</SubTitle>
     </View>
   );
