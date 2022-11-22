@@ -1,28 +1,32 @@
 import React, {useState} from 'react';
 import {
   View,
-  ButtonViewSchool,
-  ButtonSchool,
-  ButtonText,
-  ViewClassification,
-} from '../../styles';
-import {
-  Image,
-  Text,
-  Dimensions,
+  Container,
   TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+  Text,
+  CardListView,
+  ViewClassification,
+  IconsView,
+} from './styles';
+import {Image, StyleSheet} from 'react-native';
 import Header from '../../components/Header';
 import HelpModal from '../../components/HelpModal';
 import CardModal from '../../components/CardModal';
 
-import {cards} from '../../assets/Cards/cards';
+import useCards from '../../Hooks/useCards';
+import LevelSelect from '../../components/LevelSelect';
 
-export default function App({route, navigation}) {
+import images from '../../images';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+
+export default function CardsPage({route, navigation}) {
+  const {school, classCard} = route.params;
+
   const [visible, setVisible] = useState(false);
   const [visibleCard, setVisibleCard] = useState(false);
   const [image, setImage] = useState(require('../../assets/help.png'));
+  const [allCards, changeFavorite, changeLearned] = useCards(classCard, school);
 
   const closeHelpModal = () => {
     setVisible(false);
@@ -36,50 +40,85 @@ export default function App({route, navigation}) {
     setVisible(true);
   };
 
-  const {school} = route.params;
-  const arrayCards = Object.entries(cards);
-
   const filterCards = level => {
-    const listCards = arrayCards
-      .filter(([card, value]) => {
-        return (
-          value.class === 'arcana' &&
-          value.school === school &&
-          value.level === level
-        );
+    const cardList = allCards
+      .filter(card => {
+        return card.level == level;
       })
-      .map(([item, value]) => {
-        console.log(value);
+      .map(item => {
         return (
-          <View style={{zIndex: 5, width: '100%', height: '100%'}}>
+          <CardListView key={item.index}>
             <TouchableOpacity
               onPress={() => {
-                setImage(value.image);
+                setImage(images[item.id]);
                 setVisibleCard(true);
               }}>
-              <Text>{value.title}</Text>
+              <Text
+                style={{
+                  alignSelf: 'flex-start',
+                  width: '100%',
+                }}>
+                {item.title}
+              </Text>
             </TouchableOpacity>
-          </View>
+            <IconsView>
+              <TouchableOpacity
+                onPress={() => {
+                  changeFavorite(item);
+                }}>
+                <Icon
+                  name={item.isLearned ? 'star' : 'star-outline'}
+                  size={20}
+                  color={'#81060D'}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  changeLearned(item);
+                }}>
+                <Icon
+                  name={item.isLearned ? 'book' : 'book-outline'}
+                  size={20}
+                  color={'#81060D'}
+                />
+              </TouchableOpacity>
+            </IconsView>
+          </CardListView>
         );
       });
-    return listCards;
+
+    return cardList;
   };
 
   return (
     <View>
+      <Image
+        style={styles.image}
+        source={require('../../assets/background.png')}
+      />
+
+      <Header callback={openHelpModal} subtitle={'Selecione a magia'} />
       <CardModal
         visible={visibleCard}
         image={image}
         callback={closeCardModal}
       />
-      <Header callback={openHelpModal} subtitle={'Selecione a magia'} />
       <HelpModal visible={visible} callback={closeHelpModal} />
-      {/*<Image
-        style={styles.image}
-        source={require('../../assets/background.png')}
-  />*/}
-      {filterCards('1')}
-      {filterCards('5')}
+
+      <Container>
+        <LevelSelect title="Level 1" filteredCards={filterCards('1')} />
+        <LevelSelect title="Level 2" filteredCards={filterCards('2')} />
+        <LevelSelect title="Level 3" filteredCards={filterCards('3')} />
+        <LevelSelect title="Level 4" filteredCards={filterCards('4')} />
+        <LevelSelect title="Level 5" filteredCards={filterCards('5')} />
+      </Container>
+
+      <ViewClassification>
+        <Image style={styles.imageClassif} source={images[classCard]} />
+      </ViewClassification>
+      <ViewClassification school>
+        <Image style={styles.imageSchool} source={images[school]} />
+      </ViewClassification>
     </View>
   );
 }
@@ -90,13 +129,20 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'stretch',
     zIndex: -1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
   },
   imageButton: {
     borderRadius: 500,
   },
   imageClassif: {
     borderRadius: 500,
-    width: 80,
-    height: 80,
+    width: 60,
+    height: 60,
+  },
+  imageSchool: {
+    width: 30,
+    height: 40,
   },
 });
