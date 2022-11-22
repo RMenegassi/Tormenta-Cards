@@ -67,7 +67,7 @@ export default function CardsPage({route, navigation}) {
                   changeFavorite(item);
                 }}>
                 <Icon
-                  name={item.isLearned ? 'star' : 'star-outline'}
+                  name={item.isFavorite ? 'star' : 'star-outline'}
                   size={20}
                   color={'#81060D'}
                 />
