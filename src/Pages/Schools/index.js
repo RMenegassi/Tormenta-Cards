@@ -5,14 +5,14 @@ import {
   ButtonSchool,
   ButtonText,
   ViewClassification,
-} from '../../styles';
+} from './styles';
 import {Image, Dimensions, StyleSheet} from 'react-native';
 import Header from '../../components/Header';
 import HelpModal from '../../components/HelpModal';
 
 import images from '../../images';
 
-export default function App({route, navigation}) {
+export default function Schools({route, navigation}) {
   const [visible, setVisible] = useState(false);
 
   const closeHelpModal = () => {
@@ -23,7 +23,7 @@ export default function App({route, navigation}) {
     setVisible(true);
   };
 
-  const {name} = route.params;
+  const {classCard} = route.params;
 
   return (
     <View>
@@ -35,81 +35,101 @@ export default function App({route, navigation}) {
       />
 
       <ButtonViewSchool
-        top={`${Dimensions.get('window').height * 0.3}px`}
-        left={`${Dimensions.get('window').width / 2 - 100}px`}>
+        top={`${Dimensions.get('window').height * 0.28}px`}
+        left={`${Dimensions.get('window').width / 2 - 110}px`}>
         <ButtonSchool
           onPress={() =>
-            navigation.navigate('CardsPage', {school: 'abjuracao'})
+            navigation.navigate('CardsPage', {
+              school: 'abjuracao',
+              classCard,
+            })
           }>
           <Image
             style={styles.imageButton}
             source={require('../../assets/abjuracao.png')}
           />
         </ButtonSchool>
-        <ButtonText marginRight="-15">Abjuração</ButtonText>
+        <ButtonText marginRight="0">Abjuração</ButtonText>
       </ButtonViewSchool>
       <ButtonViewSchool
-        top={`${Dimensions.get('window').height * 0.42}px`}
-        left={`${Dimensions.get('window').width / 2 - 102}px`}>
+        top={`${Dimensions.get('window').height * 0.4}px`}
+        left={`${Dimensions.get('window').width / 2 - 116}px`}>
         <ButtonSchool
           onPress={() =>
-            navigation.navigate('CardsPage', {school: 'adivinhacao'})
+            navigation.navigate('CardsPage', {
+              school: 'adivinhacao',
+              classCard,
+            })
           }>
           <Image
             style={styles.imageButton}
             source={require('../../assets/adivinhacao.png')}
           />
         </ButtonSchool>
-        <ButtonText marginRight="-21">Adivinhação</ButtonText>
+        <ButtonText marginRight="0">Adivinhação</ButtonText>
       </ButtonViewSchool>
       <ButtonViewSchool
-        top={`${Dimensions.get('window').height * 0.54}px`}
-        left={`${Dimensions.get('window').width / 2 - 105}px`}>
+        top={`${Dimensions.get('window').height * 0.52}px`}
+        left={`${Dimensions.get('window').width / 2 - 116}px`}>
         <ButtonSchool
           onPress={() =>
-            navigation.navigate('CardsPage', {school: 'convocacao'})
+            navigation.navigate('CardsPage', {
+              school: 'convocacao',
+              classCard,
+            })
           }>
           <Image
             style={styles.imageButton}
             source={require('../../assets/convocacao.png')}
           />
         </ButtonSchool>
-        <ButtonText marginRight="-20">Convocação</ButtonText>
+        <ButtonText marginRight="0">Convocação</ButtonText>
       </ButtonViewSchool>
       <ButtonViewSchool
-        top={`${Dimensions.get('window').height * 0.66}px`}
-        left={`${Dimensions.get('window').width / 2 - 100}px`}>
+        top={`${Dimensions.get('window').height * 0.64}px`}
+        left={`${Dimensions.get('window').width / 2 - 121}px`}>
         <ButtonSchool
           onPress={() =>
-            navigation.navigate('CardsPage', {school: 'encantamento'})
+            navigation.navigate('CardsPage', {
+              school: 'encantamento',
+              classCard,
+            })
           }>
           <Image
             style={styles.imageButton}
             source={require('../../assets/encantamento.png')}
           />
         </ButtonSchool>
-        <ButtonText marginRight="-30">Encantamento</ButtonText>
+        <ButtonText marginRight="0">Encantamento</ButtonText>
       </ButtonViewSchool>
 
       <ButtonViewSchool
-        top={`${Dimensions.get('window').height * 0.3}px`}
-        right={`${Dimensions.get('window').width / 2 - 115}px`}>
+        top={`${Dimensions.get('window').height * 0.28}px`}
+        right={`${Dimensions.get('window').width / 2 - 113}px`}>
         <ButtonSchool
           onPress={() =>
-            navigation.navigate('CardsPage', {school: 'evocacao'})
+            navigation.navigate('CardsPage', {
+              school: 'evocacao',
+              classCard,
+            })
           }>
           <Image
             style={styles.imageButton}
             source={require('../../assets/evocacao.png')}
           />
         </ButtonSchool>
-        <ButtonText marginRight="-10">Evocação</ButtonText>
+        <ButtonText marginRight="0">Evocação</ButtonText>
       </ButtonViewSchool>
       <ButtonViewSchool
-        top={`${Dimensions.get('window').height * 0.42}px`}
-        right={`${Dimensions.get('window').width / 2 - 118}px`}>
+        top={`${Dimensions.get('window').height * 0.4}px`}
+        right={`${Dimensions.get('window').width / 2 - 102}px`}>
         <ButtonSchool
-          onPress={() => navigation.navigate('CardsPage', {school: 'ilusao'})}>
+          onPress={() =>
+            navigation.navigate('CardsPage', {
+              school: 'ilusao',
+              classCard,
+            })
+          }>
           <Image
             style={styles.imageButton}
             source={require('../../assets/ilusao.png')}
@@ -118,38 +138,39 @@ export default function App({route, navigation}) {
         <ButtonText marginRight="0">Ilusão</ButtonText>
       </ButtonViewSchool>
       <ButtonViewSchool
-        top={`${Dimensions.get('window').height * 0.54}px`}
-        right={`${Dimensions.get('window').width / 2 - 115}px`}>
+        top={`${Dimensions.get('window').height * 0.52}px`}
+        right={`${Dimensions.get('window').width / 2 - 125}px`}>
         <ButtonSchool
           onPress={() =>
-            navigation.navigate('CardsPage', {school: 'necromancia'})
+            navigation.navigate('CardsPage', {
+              school: 'necromancia',
+              classCard,
+            })
           }>
           <Image
             style={styles.imageButton}
             source={require('../../assets/necromancia.png')}
           />
         </ButtonSchool>
-        <ButtonText marginRight="-25">Necromancia</ButtonText>
+        <ButtonText marginRight="0">Necromancia</ButtonText>
       </ButtonViewSchool>
       <ButtonViewSchool
-        top={`${Dimensions.get('window').height * 0.66}px`}
-        right={`${Dimensions.get('window').width / 2 - 115}px`}>
+        top={`${Dimensions.get('window').height * 0.64}px`}
+        right={`${Dimensions.get('window').width / 2 - 128}px`}>
         <ButtonSchool
           onPress={() =>
-            navigation.navigate('CardsPage', {school: 'transmutacao'})
+            navigation.navigate('CardsPage', {
+              school: 'transmutacao',
+              classCard,
+            })
           }>
           <Image
             style={styles.imageButton}
             source={require('../../assets/transmutacao.png')}
           />
         </ButtonSchool>
-        <ButtonText marginRight="-25">Transmutação</ButtonText>
+        <ButtonText marginRight="0">Transmutação</ButtonText>
       </ButtonViewSchool>
-      <ViewClassification
-        top={`${Dimensions.get('window').height * 0.77}px`}
-        right={`${Dimensions.get('window').width / 2 - 35}px`}>
-        <Image style={styles.imageClassif} source={images[name]} />
-      </ViewClassification>
     </View>
   );
 }
@@ -160,9 +181,14 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'stretch',
     zIndex: -1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
   imageButton: {
     borderRadius: 500,
+    width: 30,
+    height: 40,
   },
   imageClassif: {
     borderRadius: 500,
