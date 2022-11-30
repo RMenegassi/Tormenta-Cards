@@ -8,6 +8,7 @@ export const View = styled.View`
 
 export const Container = styled.ScrollView`
   flex: 1;
+  margin-bottom: 110px;
 `;
 
 export const Spacer = styled.View`
