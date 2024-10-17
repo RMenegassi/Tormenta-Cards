@@ -3,7 +3,7 @@
   <h1 align="center">Tormenta Cards</h3>
 
   <p align="center">
-    A spell manager for Tormenta RPG built with React-Native for Android devices.
+    An app to manage your spells in Tormenta RPG. Built with React-Native for Android devices.
   </p>
 </div>
 
@@ -27,9 +27,9 @@
 </div>
 
 ## About
-Tormenta Cards is an app to help players of the Brazilian RPG Tormenta. The app lets you save your spells into two differents decks, one for favorite spells and one for learned spells. In addition, the player can easily access the image with the description of the desired spell.
+Tormenta Cards is an app to help players of the Brazilian RPG Tormenta. The app lets you save your spells into two differents decks, one for your favorite spells and one for yout learned spells. In addition, the player can easily access an images with a description of the desired spell.
 
-This application was made to improve the player's experience, making it easier and faster to search spells, allowing a better use of the time in sessions.
+The main goals is to improve player's experience by making it easier and quicker to search for spells.
 
 ## Technologies
 
