@@ -27,7 +27,7 @@
 </div>
 
 ## About
-Tormenta Cards is an app to help players of the Brazilian RPG Tormenta. The app lets you save your spells into two differents decks, one for your favorite spells and one for yout learned spells. In addition, the player can easily access an images with a description of the desired spell.
+Tormenta Cards is an app to help players of the Brazilian RPG Tormenta. The app lets you save your spells into two differents decks (favorites / learned). In addition, the player can easily access an image with a description of the desired spell.
 
 The main goals is to improve player's experience by making it easier and quicker to search for spells.
 
